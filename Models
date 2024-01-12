@@ -1,0 +1,201 @@
+  import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PersonTest {
+
+    @Test
+    void testPersonCreation() {
+        Person person = new Person("John Doe", 25);
+
+        assertEquals("John Doe", person.getName());
+        assertEquals(25, person.getAge());
+    }
+
+    @Test
+    void testEqualsAndHashCode() {
+        Person person1 = new Person("John Doe", 25);
+        Person person2 = new Person("John Doe", 25);
+
+        assertEquals(person1, person2);
+        assertEquals(person1.hashCode(), person2.hashCode());
+    }
+
+    // Add more test cases based on your model's behavior
+
+    @Test
+    void testSetName() {
+        Person person = new Person("John Doe", 25);
+        person.setName("Jane Doe");
+
+        assertEquals("Jane Doe", person.getName());
+    }
+
+    @Test
+    void testSetAge() {
+        Person person = new Person("John Doe", 25);
+        person.setAge(30);
+
+        assertEquals(30, person.getAge());
+    }
+
+    // Add more test cases based on your model's behavior
+}
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PersonTest {
+
+    @Test
+    void testEqualsAndHashCodeForEqualObjects() {
+        Person person1 = new Person("John Doe", 25);
+        Person person2 = new Person("John Doe", 25);
+
+        // Test equals
+        assertTrue(person1.equals(person2));
+        assertTrue(person2.equals(person1));
+
+        // Test hashCode
+        assertEquals(person1.hashCode(), person2.hashCode());
+    }
+
+    @Test
+    void testEqualsAndHashCodeForUnequalObjects() {
+        Person person1 = new Person("John Doe", 25);
+        Person person2 = new Person("Jane Doe", 30);
+
+        // Test equals
+        assertFalse(person1.equals(person2));
+        assertFalse(person2.equals(person1));
+
+        // Test hashCode (optional, but recommended)
+        assertNotEquals(person1.hashCode(), person2.hashCode());
+    }
+
+    @Test
+    void testEqualsAndHashCodeForSameObject() {
+        Person person = new Person("John Doe", 25);
+
+        // Test equals
+        assertTrue(person.equals(person));
+
+        // Test hashCode
+        assertEquals(person.hashCode(), person.hashCode());
+    }
+
+    @Test
+    void testEqualsAndHashCodeForNull() {
+        Person person = new Person("John Doe", 25);
+
+        // Test equals with null
+        assertFalse(person.equals(null));
+
+        // Test hashCode with null
+        assertNotEquals(person.hashCode(), Objects.hashCode(null));
+    }
+
+    // Add more test cases based on your specific requirements and edge cases
+}
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PersonTest {
+
+    @Test
+    void testEqualsAndHashCode() {
+        // Test case 1: Objects are equal
+        Person person1 = new Person("John Doe", 25);
+        Person person2 = new Person("John Doe", 25);
+
+        assertEquals(person1, person2);
+        assertEquals(person1.hashCode(), person2.hashCode());
+
+        // Test case 2: Objects are not equal
+        Person person3 = new Person("Jane Doe", 30);
+
+        assertNotEquals(person1, person3);
+        assertNotEquals(person1.hashCode(), person3.hashCode());
+
+        // Test case 3: Compare with itself
+        assertEquals(person1, person1);
+        assertEquals(person1.hashCode(), person1.hashCode());
+
+        // Test case 4: Compare with null
+        assertNotEquals(person1, null);
+
+        // Test case 5: Compare with an object of a different class
+        assertNotEquals(person1, "Not a Person");
+
+        // Test case 6: Compare with an object with different properties
+        Person person4 = new Person("John Doe", 30);
+        assertNotEquals(person1, person4);
+        assertNotEquals(person1.hashCode(), person4.hashCode());
+    }
+
+    // Add more test cases based on your model's behavior
+
+    @Test
+    void testHashCodeConsistency() {
+        // Test case for hashCode consistency
+        Person person = new Person("John Doe", 25);
+
+        int hashCode1 = person.hashCode();
+        int hashCode2 = person.hashCode();
+
+        assertEquals(hashCode1, hashCode2);
+    }
+}
+
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PersonTest {
+
+    @Test
+    void testPersonCreation() {
+        Person person = new Person("John Doe", 25);
+
+        assertEquals("John Doe", person.getName());
+        assertEquals(25, person.getAge());
+    }
+
+    @Test
+    void testSetName() {
+        Person person = new Person("John Doe", 25);
+        person.setName("Jane Doe");
+
+        assertEquals("Jane Doe", person.getName());
+    }
+
+    @Test
+    void testSetAge() {
+        Person person = new Person("John Doe", 25);
+        person.setAge(30);
+
+        assertEquals(30, person.getAge());
+    }
+
+    @Test
+    void testSetAgeNegative() {
+        Person person = new Person("John Doe", 25);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            person.setAge(-5);
+        });
+    }
+
+    @Test
+    void testEqualsAndHashCode() {
+        Person person1 = new Person("John Doe", 25);
+        Person person2 = new Person("John Doe", 25);
+
+        assertEquals(person1, person2);
+        assertEquals(person1.hashCode(), person2.hashCode());
+    }
+
+    // Additional test cases for any other methods or behavior
+
+}
